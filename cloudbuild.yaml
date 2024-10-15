@@ -25,4 +25,4 @@ substitutions:
    _PROJECT_ID: 'cicd-project1-438707'
    _REGION: 'us-central1'
    _ARTIFACT_LOCATION: 'us-central1-docker.pkg.dev'
-   _REPO_NAME: 'gcp-github-trigger'
+   _REPO_NAME: 'cicd-gcr-repo'
