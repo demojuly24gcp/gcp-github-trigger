@@ -1,5 +1,5 @@
 steps:
-
+  #attempting cloud trigger
 
   # Step 3: Run the Python file within the container
   - name: '$_ARTIFACT_LOCATION/$_PROJECT_ID/$_REPO_NAME/cicd-mlops1-v1:latest'
