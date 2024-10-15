@@ -10,7 +10,7 @@ steps:
     
   # Step 4: Write results to Google Cloud Storage
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', './xgb-pipeline1.yaml', 'gs://$_PROJECT_ID-bucket'] 
+    args: ['cp', './xgb-pipeline.yaml', 'gs://$_PROJECT_ID-bucket'] 
 
 options:
     logging: CLOUD_LOGGING_ONLY
