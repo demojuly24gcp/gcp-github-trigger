@@ -1,5 +1,6 @@
 steps:
 
+
   # Step 3: Run the Python file within the container
   - name: '$_ARTIFACT_LOCATION/$_PROJECT_ID/$_REPO_NAME/cicd-mlops1-v1:latest'
     args: ['python', './kfp/pipeline.py']  
@@ -9,7 +10,7 @@ steps:
     
   # Step 4: Write results to Google Cloud Storage
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', './xgb-pipeline.yaml', 'gs://$_PROJECT_ID-bucket'] 
+    args: ['cp', './xgb-pipeline1.yaml', 'gs://$_PROJECT_ID-bucket'] 
 
 options:
     logging: CLOUD_LOGGING_ONLY
