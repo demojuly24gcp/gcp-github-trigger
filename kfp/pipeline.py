@@ -232,9 +232,6 @@ def eval_model(
 def deploy_xgboost_model(
     model: Input[Model],
     project_id: str,
-    # region: str = "us-central1",  # Optional, default to a common region
-    #endpoint_display_name: str = "breast-cancer-xgb-classification",
-    #machine_type: str = "n1-standard-4",
     vertex_endpoint: Output[Artifact],
     vertex_model: Output[Model],
 ) -> None:
