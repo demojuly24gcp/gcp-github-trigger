@@ -22,7 +22,7 @@ options:
     logging: CLOUD_LOGGING_ONLY
     
 substitutions:
-   _PROJECT_ID: 'mlops-cicd-439012'
-   _REGION: 'us-central1'
+   _PROJECT_ID: 'your project id'
+   _REGION: 'your project region'
    _ARTIFACT_LOCATION: 'us-central1-docker.pkg.dev'
-   _REPO_NAME: 'cicd-docker-repo'
+   _REPO_NAME: 'your GCR configured repo name'
