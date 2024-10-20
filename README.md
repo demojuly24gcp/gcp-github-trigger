@@ -103,7 +103,6 @@ This guide will help you set up a CI/CD pipeline for your ML models using Google
     ``` 
     PROJECT_ID = 'your-project-id'                     # <---CHANGE THIS
     REGION = 'your-region'                             # <---CHANGE THIS
-    PIPELINE_ROOT = 'your-cloud-storage-pipeline-root'  # <---CHANGE THIS
     ```
 
 
