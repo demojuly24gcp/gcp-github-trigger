@@ -7,8 +7,8 @@ from collections import namedtuple
 from typing import NamedTuple
 
 
-PROJECT_ID = "your-project-id" # replace with project ID
-REGION = "your-region"
+PROJECT_ID = "polar-arbor-437711-h3" # replace with project ID
+REGION = "us-central1"
 EXPERIMENT = 'vertex-pipelines'
 
 # gcs bucket
