@@ -7,18 +7,17 @@ from collections import namedtuple
 from typing import NamedTuple
 
 
-PROJECT_ID = os.environ['PROJECT_ID'] # replace with project ID
-REGION = os.environ['REGION']
+PROJECT_ID = "your-project-id" # replace with project ID
+REGION = "your-region"
 EXPERIMENT = 'vertex-pipelines'
 
 # gcs bucket
 GCS_BUCKET = PROJECT_ID
 BUCKET_URI = f"gs://{PROJECT_ID}-bucket"  # @param {type:"string"}
-PIPELINE_ROOT = PIPELINE_ROOT = BUCKET_URI + "/pipeline_root/"
 
 # BUCKET_NAME="gs://" + PROJECT_ID + "-bucket"
 PIPELINE_ROOT = BUCKET_URI + "/pipeline_root/"
-aiplatform.init(project=PROJECT_ID, staging_bucket=BUCKET_URI)
+aiplatform.init(project=PROJECT_ID)
 
 @dsl.component(base_image='python:3.8', 
     packages_to_install=[
@@ -158,7 +157,7 @@ def eval_model(
     metrics: Output[ClassificationMetrics],
     smetrics: Output[Metrics],
     bucket_name: str,
-    score_threshold: float = 0.8,
+    score_threshold: float = 0.5,
 ) -> NamedTuple("Outputs", [("deploy", str)]):
     
     
@@ -266,7 +265,7 @@ def deploy_xgboost_model(
     
 @dsl.pipeline(
     # Default pipeline root. You can override it when submitting the pipeline.
-    pipeline_root=PIPELINE_ROOT + "xgboost-pipeline-v2",
+    pipeline_root=PIPELINE_ROOT + "xgboost-pipeline-v1",
     # A name for the pipeline. Use to determine the pipeline Context.
     name="xgboost-pipeline-with-deployment-v2",
 )
@@ -279,7 +278,7 @@ def pipeline():
     eval_op = eval_model(
         test_set=dataset_op.outputs["dataset_test"],
         xgb_model=training_op.outputs["model_artifact"],
-        bucket_name = BUCKET_URI
+        bucket_name = f"{PROJECT_ID}-bucket"
     )
 
     with dsl.If(

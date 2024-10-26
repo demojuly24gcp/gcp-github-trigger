@@ -5,7 +5,6 @@ from google.cloud import aiplatform
 PROJECT_ID = 'your-project-id'                     # <---CHANGE THIS
 REGION = 'your-region'                             # <---CHANGE THIS
 
-
 def subscribe(event, context):
     """Triggered by a change to a Cloud Storage bucket.
     Args:
@@ -17,7 +16,7 @@ def subscribe(event, context):
     bucket_name = event['bucket']
     
     # Optionally, you can check the file type to ensure it's a YAML or JSON
-    if file_name.endswith('.yaml') or file_name.endswith('.json'):
+    if file_name.endswith('.yaml'):
         pipeline_spec_uri = f'gs://{bucket_name}/{file_name}'
         
         # Create payload JSON with just the pipeline_spec_uri
@@ -29,13 +28,7 @@ def subscribe(event, context):
         trigger_pipeline_run(payload_json)
 
 def trigger_pipeline_run(payload_json):
-    """Triggers a pipeline run.
-    Args:
-          payload_json: expected in the following format:
-            {
-              "pipeline_spec_uri": "<path-to-your-compiled-pipeline>"
-            }
-    """
+
     pipeline_spec_uri = payload_json['pipeline_spec_uri']
     
     # Initialize the Vertex AI SDK
